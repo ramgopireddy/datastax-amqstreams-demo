@@ -1,0 +1,3 @@
+image: 'jsanda/cass-operator:securitycontext'
+
+containerImage: 'jsanda/cass-operator:securitycontext'

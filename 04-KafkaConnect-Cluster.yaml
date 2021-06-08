@@ -1,0 +1,32 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnect
+metadata:
+  name: datastax-connect
+  namespace: demo
+  annotations:
+    strimzi.io/use-connector-resources: 'true'
+spec:
+  bootstrapServers: 'my-cluster-kafka-bootstrap:9093'
+  version: 2.6.0
+  tls:
+    trustedCertificates:
+      - secretName: my-cluster-cluster-ca-cert
+        certificate: ca.crt
+  replicas: 1
+  config:
+    group.id: datastax-connect
+    config.storage.replication.factor: 2
+    config.storage.topic: datastax-connect-configs
+    offset.storage.replication.factor: 2
+    offset.storage.topic: datastax-connect-offsets
+    status.storage.replication.factor: 2
+    status.storage.topic: datastax-connect-status
+  build: 
+    output: 
+      type: docker 
+      image: image-registry.openshift-image-registry.svc:5000/demo/datastax-connect:latest
+    plugins: 
+      - name: datastax-cassandra-connector
+        artifacts:
+          - type: tgz
+            url: https://downloads.datastax.com/kafka/kafka-connect-cassandra-sink.tar.gz

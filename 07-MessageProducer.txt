@@ -1,0 +1,18 @@
+./bin/kafka-console-producer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic stock-stream --property "parse.key=true" --property "key.separator=:"
+
+WALMART:{"symbol":"WMT", "datetime":"2021-06-08T12:01:03.234", "exchange":"NYSE", "industry":"RETAIL", "value":90}
+BERKSHIRE HATHAWAY:{"symbol":"BRK.A", "datetime":"2021-06-08T12:01:04.786", "exchange":"NYSE", "industry":"FINANCE", "value":304671}
+APPLE:{"symbol":"APPL", "datetime":"2021-06-08T12:01:05.786", "exchange":"NASDAQ", "industry":"TECH", "value":208}
+EXXON MOBIL:{"symbol":"XOM", "datetime":"2021-06-08T12:01:06.786", "exchange":"NYSE", "industry":"ENERGY", "value":80}
+MCKESSON:{"symbol":"MCK", "datetime":"2021-06-08T12:01:07.786", "exchange":"NYSE", "industry":"HEALTH", "value":126}
+UNITEDHEALTH GROUP:{"symbol":"UNH", "datetime":"2021-06-08T12:01:08.786", "exchange":"NYSE", "industry":"HEALTH", "value":257}
+CVS HEALTH:{"symbol":"CVS", "datetime":"2021-06-08T12:01:09.786", "exchange":"NYSE", "industry":"RETAIL", "value":65}
+GENERAL MOTORS:{"symbol":"GM", "datetime":"2021-06-08T12:01:10.786", "exchange":"NYSE", "industry":"AUTO", "value":38}
+AT&T:{"symbol":"T", "datetime":"2021-06-08T12:01:11.786", "exchange":"NYSE", "industry":"TELECOM", "value":33}
+FORD MOTOR:{"symbol":"F", "datetime":"2021-06-08T12:01:12.786", "exchange":"NYSE", "industry":"AUTO", "value":10}
+AMERISOURCEBERGEN:{"symbol":"ABC", "datetime":"2021-06-08T12:01:13.786", "exchange":"NYSE", "industry":"PHARMA", "value":81}
+AMAZON.COM:{"symbol":"AMZN", "datetime":"2021-06-08T12:01:14.786", "exchange":"NASDAQ", "industry":"TECH", "value":1823}
+GENERAL ELECTRIC:{"symbol":"GE", "datetime":"2021-06-08T12:01:15.786", "exchange":"NYSE", "industry":"CONGLOMERRATE", "value":13}
+VERIZON COMMUNICATIONS:{"symbol":"VZ", "datetime":"2021-06-08T12:01:16.786", "exchange":"NYSE", "industry":"TELECOM", "value":52}
+CARDINAL HEALTH:{"symbol":"CAH", "datetime":"2021-06-08T12:01:17.786", "exchange":"NYSE", "industry":"PHARMA", "value":50}
+COSTCO:{"symbol":"COST", "datetime":"2021-06-08T12:01:18.786", "exchange":"NASDAQ", "industry":"RETAIL", "value":222}

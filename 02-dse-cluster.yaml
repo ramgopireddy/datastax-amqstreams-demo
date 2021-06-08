@@ -1,0 +1,38 @@
+apiVersion: cassandra.datastax.com/v1beta1
+kind: CassandraDatacenter
+metadata:
+  name: dc1
+  namespace: demo
+spec:
+  size: 1
+  clusterName: cluster1
+  serverVersion: 6.8.4
+  serverType: dse
+  serverImage: registry.connect.redhat.com/datastax/dse-server:6.8.4-ubi7
+  storageConfig:
+    cassandraDataVolumeClaimSpec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
+      storageClassName: gp2-csi
+  managementApiAuth:
+    insecure: {}
+  podTemplateSpec:
+    spec:
+      containers: []
+      securityContext: {}
+  config:
+    dse-yaml:
+      authorization_options:
+        enabled: false
+      authentication_options:
+        enabled: false
+        default_scheme: internal
+    jvm-server-options:
+      initial_heap_size: 800M
+      max_heap_size: 800M
+      additional-jvm-opts:
+        - '-Ddse.system_distributed_replication_dc_names=dc1'
+        - '-Ddse.system_distributed_replication_per_dc=1'

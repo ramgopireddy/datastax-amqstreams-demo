@@ -1,0 +1,20 @@
+apiVersion: kafka.strimzi.io/v1alpha1
+kind: KafkaConnector
+metadata:
+  namespace: demo
+  name: users-sink
+  labels:
+    strimzi.io/cluster: my-connect-cluster
+spec:
+  class: com.datastax.oss.kafka.sink.CassandraSinkConnector
+  config:
+    loadBalancing.localDc: dc1 
+    contactPoints: cluster1-dc1-all-pods-service
+    port: 9042
+    topics: demo 
+    topic.demo1.demo.users.mapping: lastname=value.lastname,firstname=value.firstname, email=value.email
+  tasksMax: 10
+  key.converter: org.apache.kafka.connect.storage.StringConverter
+  #key.converter.schemas.enable: false
+  value.converter: org.apache.kafka.connect.json.JsonConverter
+  #value.converter.schemas.enable: false

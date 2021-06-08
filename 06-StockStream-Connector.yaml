@@ -1,0 +1,24 @@
+apiVersion: kafka.strimzi.io/v1alpha1
+kind: KafkaConnector
+metadata:
+  namespace: demo
+  name: stocks-sink
+  labels:
+    strimzi.io/cluster: datastax-connect
+spec:
+  class: com.datastax.oss.kafka.sink.CassandraSinkConnector
+  #class=com.datastax.kafkaconnector.DseSinkConnector
+  config:
+    loadBalancing.localDc: dc1 
+    contactPoints: cluster1-dc1-service
+    port: 9042
+    topics: stock-stream
+    key.converter: org.apache.kafka.connect.storage.StringConverter
+    key.converter.schemas.enable: false
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter.schemas.enable: false 
+    topic.stock-stream.demo.stocks_table_by_symbol.mapping: "symbol=value.symbol, datetime=value.datetime, exchange=value.exchange, industry=value.industry, name=key, value=value.value"
+    topic.stock-stream.demo.stocks_table_by_exchange.mapping: "symbol=value.symbol, datetime=value.datetime, exchange=value.exchange, industry=value.industry, name=key, value=value.value"
+    topic.stock-stream.demo.stocks_table_by_industry.mapping: "symbol=value.symbol, datetime=value.datetime, exchange=value.exchange, industry=value.industry, name=key, value=value.value"
+  tasksMax: 10
+
