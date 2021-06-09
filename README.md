@@ -23,12 +23,12 @@ oc apply -f 01-dse-Operator-Dependencies.yaml
 ```
 **Install AMQ Streams Operator from OperatorHub with options shown below**: 
 
-   <img src="docimgs/amqstreamsoperator.png" alt="repo sample" width="300" height="300"/>
+   <img src="docimgs/amqstreamsoperator.png" alt="repo sample"/>
 
 
 **Install Datastax Operator from OperatorHub whith options shown below**: 
 
-   <img src="docimgs/datastaxoperator.png" alt="repo sample" width="300" height="300"/>
+   <img src="docimgs/datastaxoperator.png" alt="repo sample"/>
 
 **Edit Datastax operator yaml**: 
 Update the operator yaml to use a custom image to work around a SCC related issue. This is expected to be resolved in the next minor release.
@@ -50,7 +50,7 @@ oc apply -f 02-dse-cluster.yaml
 oc apply -f 03-kafka-cluster.yaml
 ```
 Wait for both cluster to be ready before proceeding. The Developer console should looks like this:
-<img src="docimgs/datastaxoperator.png" alt="repo sample" width="300" height="300"/>
+<img src="docimgs/devconsole.png" alt="repo sample"/>
 
 **Create Kafka Connect cluster with Datastax plugin**: 
 ```
@@ -111,5 +111,5 @@ select * from demo.stocks_table_by_industry;
 select * from demo.stocks_table_by_exchange;
 
 ```
-   <img src="docimgs/verifytables.png" alt="repo sample" width="300" height="300"/>
+   <img src="docimgs/verifytables.png" alt="repo sample"/>
 
