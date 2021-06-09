@@ -4,6 +4,8 @@ Datastax integration with AMQ Streams using Kafka Connect on Openshift
 First, clone this github repo:
 ```
 git clone https://github.com/ramgopireddy/datastax-amqstreams-demo.git
+
+cd datastax-amqstreams-demo
 ```
 
 # Installing Operators
@@ -12,8 +14,6 @@ We will install AMQ Streams (Red Hat Kafka) and Datastax operators.
 **Create a new project named "demo"**: 
 ```
 oc new-project demo
-
-cd datastax-amqstreams-demo
 ```
 
 **Install Datastax operator pre-reqs**: 
