@@ -30,22 +30,24 @@ oc apply -f 01-dse-Operator-Dependencies.yaml
 
    <img src="docimgs/datastaxoperator.png" alt="repo sample"/>
 
-**Edit Datastax operator yaml**: 
+**Edit Datastax operator yaml**:
+
 Update the operator yaml to use a custom image to work around a SCC related issue. This is expected to be resolved in the next minor release.
 ```
 image: 'jsanda/cass-operator:securitycontext'
 containerImage: 'jsanda/cass-operator:securitycontext'
 ```
 # Deploy Kafka and Datastax Clusters
+
 We will install AMQ Streams (Red Hat Kafka) and Datastax operators.
 
-**Create Datastax Cluster**: 
-The cluster takes a few minutes to come up. 
+**Create Datastax Cluster**:
 
+The cluster takes a few minutes to come up.
 ```
 oc apply -f 02-dse-cluster.yaml
 ```
-**Create Kafka Cluster**: 
+**Create Kafka Cluster**:
 ```
 oc apply -f 03-kafka-cluster.yaml
 ```
@@ -64,7 +66,6 @@ oc apply -f 04-KafkaConnect-Cluster.yaml
 oc rsh cluster1-dc1-default-sts-0
 
 bin/cqlsh
-
 ```
 **Create tables**
 
@@ -74,7 +75,6 @@ CREATE KEYSPACE demo WITH replication = {'class': 'SimpleStrategy', 'replication
 create table if not exists demo.stocks_table_by_symbol (symbol text, datetime timestamp, exchange text, industry text, name text, value double, PRIMARY KEY (symbol, datetime));
 create table if not exists demo.stocks_table_by_exchange (symbol text, datetime timestamp, exchange text, industry text, name text, value double, PRIMARY KEY (exchange, datetime));
 create table if not exists demo.stocks_table_by_industry (symbol text, datetime timestamp, exchange text, industry text, name text, value double, PRIMARY KEY (industry, datetime));
-
 ```
 
 **Create kafka connector** 
@@ -91,7 +91,6 @@ oc apply -f 06-StockStream-Connector.yaml
 oc rsh my-cluster-kafka-0
 
 ./bin/kafka-console-producer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic stock-stream --property "parse.key=true" --property "key.separator=:"
-
 ```
 
 **Paste the following messages at the prompt. More records found in 07-MessageProducer.txt**
