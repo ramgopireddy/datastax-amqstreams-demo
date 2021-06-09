@@ -16,22 +16,21 @@ oc new-project demo
 cd datastax-amqstreams-demo
 ```
 
-1) **Install Datastax operator pre-reqs**: 
+2) **Install Datastax operator pre-reqs**: 
 Clone this github repo:
 ```
 oc apply -f 01-dse-Operator-Dependencies.yaml
 ```
-1) **File System mode**: 
-Clone this github repo:
-```
-git clone https://github.com/kiegroup/jbpm-work-items.git
-```
-1) **File System mode**: 
-Clone this github repo:
-```
-git clone https://github.com/kiegroup/jbpm-work-items.git
-```
-1) **File System mode**: 
+3) **Install AMQ Streams Operator from OperatorHub with options shown below**: 
+
+   <img src="docimgs/amqstreamsoperator.png" alt="repo sample" width="300" height="300"/>
+
+
+4) **Install Datastax Operator from OperatorHub whith options shown below**: 
+
+   <img src="docimgs/datastaxoperator.png" alt="repo sample" width="300" height="300"/>
+
+5) **Edit Datastax operator yaml**: 
 Clone this github repo:
 ```
 git clone https://github.com/kiegroup/jbpm-work-items.git
