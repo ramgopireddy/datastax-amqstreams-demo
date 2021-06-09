@@ -17,7 +17,6 @@ oc new-project demo
 ```
 
 **Install Datastax operator pre-reqs**: 
-Clone this github repo:
 ```
 oc apply -f 01-dse-Operator-Dependencies.yaml
 ```
@@ -38,8 +37,6 @@ image: 'jsanda/cass-operator:securitycontext'
 containerImage: 'jsanda/cass-operator:securitycontext'
 ```
 # Deploy Kafka and Datastax Clusters
-
-We will install AMQ Streams (Red Hat Kafka) and Datastax operators.
 
 **Create Datastax Cluster**:
 
